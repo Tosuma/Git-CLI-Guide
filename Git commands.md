@@ -191,13 +191,15 @@ _Note_: When executing the command the repo will be placed in your current locat
 clone the repo 'AAU-Latex-Template-English' to your computer.
 
 
-## Get status of your local
+## Get status of your local / see changes
 
 ```
 git status
 ```
 
-This will give you a status of current [working tree](#working-tree).
+This will give you a status of current [working tree](#working-tree). Here you
+will be able to see the files which has had changes or have been added since the
+last commit. You will also be able to see the files which has been [staged](#stage).
 
 
 ## [Stage](#stage) files to commit
@@ -329,19 +331,6 @@ git checkout
 ```
 
 
-## See files with changes
-
-```
-git diff [--name-only]
-```
-
-This command shows all the changes made in [the working tree](#working-tree).
-
-When omitting the tag ``--name-only`` all the changes are shown, i.e. which
-lines are removed and which are added. If the tag ``--name-only`` is included
-the command will give a list of all the files with changes instead.
-
-
 # Useful Commands
 
 ## Store Login Credentials
@@ -433,4 +422,11 @@ This command will discard all changes made, and reset back to what is on the cur
 
 ```
 git checkout .
+```
+
+
+## Get graph of git commits
+
+```
+git log --all --decorate --oneline --graph
 ```
