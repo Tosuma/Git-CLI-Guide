@@ -258,6 +258,39 @@ The message should be enclosed by single or double qoutes to make it a string.
 message 'ADDDED: API-documentation.md'.
 
 
+## Undo a commit you have made **_before_** push
+
+```
+git reset [--soft | --hard] [HEAD<~number>]
+```
+
+This command will let you undo a commit **_before_** it has been pushed to the
+remote. It will still keep the changes you have made, but remember to commit the
+changes you need! Use [``git status``](#get-status-of-your-local) to see the
+changes which has been made.
+
+The number in ``~number`` is the amount of commits you want to undo, which gives
+you the option to undo multiple commits.
+
+The ``--hard`` tag should be **_used with causion_** since it will remove all
+changes - i.e. it destroys the changes made in the commits which are undone.
+
+The ``--soft`` tag will leave your changes in the index, meaning that you can
+make a commit immediately without doing ``git add``.
+
+
+### Example
+
+``git reset --hard HEAD~1`` - undos the latest commit and removes all changes
+from said commit.
+
+``git reset HEAD~2`` - undos the 2 latest commits and keeps the changes, however
+they are not stages for a new commit.
+
+``git reset --soft HEAD~1`` - undo the latest commit and keeps the changes where
+the changes are staged and ready for a new commit.
+
+
 ## Push commits to the [remote](#remote)
 
 ```
