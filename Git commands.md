@@ -139,7 +139,7 @@ This can be deleted without deleting the [remote](#remote) in the cloud.
 
 ### Working tree
 
-The Working Tree in Git is a directory (and its files and subdirectory) on your
+The _Working Tree_ in Git is a directory (and its files and subdirectory) on your
 file system that is associated with a repository. 
 
 
@@ -152,12 +152,12 @@ never change them unless you explicitly ask it to.
 
 ### Stage
 
-To stage af file or folder means that the subject has been added to the commit.
+To _stage_ af file or folder means that the subject has been added to the commit.
 
 
 ### Unstage
 
-To unstage a file or folder means that the subject has been removed from the commit.
+To _unstage_ a file or folder means that the subject has been removed from the commit.
 
 
 ### Pull Request
@@ -172,7 +172,7 @@ Representing your current working directory.
 Can generally be thought of the main/master branch.
 
 
-# Basic Git Commands
+# Essential Commands
 
 ## Get a reposetory on pc
 
@@ -187,19 +187,8 @@ _Note_: When executing the command the repo will be placed in your current locat
 
 ### Example
 
-``git clone https://github.com/Tosuma/AAU-Latex-Template-English.git``- will
+``git clone https://github.com/Tosuma/AAU-Latex-Template-English.git`` - will
 clone the repo 'AAU-Latex-Template-English' to your computer.
-
-
-## Get status of your local / see changes
-
-```
-git status
-```
-
-This will give you a status of current [working tree](#working-tree). Here you
-will be able to see the files which has had changes or have been added since the
-last commit. You will also be able to see the files which has been [staged](#stage).
 
 
 ## [Stage](#stage) files to commit
@@ -220,27 +209,6 @@ For more information [go to here](#folder-structure).
 located in the folder 'API' to the commit.
 
 
-## [Unstage](#unstage) files from commit
-
-```
-git restore --staged <Path>
-```
-
-The given path (file or folder) will be unstaged from the commit.
-However, it is rare that it is used.
-
-**NB:** This command is experimental, the behavior may change.
-
-
-### Example
-
-``git restore --staged ./API/API-documentation.md`` - removes the file
-'API-documentation.md' located in the folder 'API' from the commit.
-
-``git restore --staged .`` - removes all files and folders from the commit.
-For more information [go to here](#folder-structure).
-
-
 ## Make commit
 
 ```
@@ -258,6 +226,97 @@ The message should be enclosed by single or double qoutes to make it a string.
 
 ``git commit -m "ADDDED: API-documentation.md"`` - commits the stages with the
 message 'ADDDED: API-documentation.md'.
+
+
+## Push commits to the [remote](#remote)
+
+```
+git push [-u <target remote> <branch name>]
+```
+
+This command updates the [remote](#remote) with the [commits](#commit) from the
+specified [branch](#branch).
+
+The ``-u`` tag is used for new branches which is not tracked by the [remote](#remote).
+This is a one time setup, meaning that it is _only_ the first time you ask the
+remote to track a branch that you should include the ``-u`` tag.
+Specify which remote should track the specified branch. Unless you know what
+you are doing use the ``origin`` as the ``target remote``.
+
+
+### Example
+
+``git push`` - pushes the commits from the [local](#local) to the [remote](#remote).
+
+``git push origin api-documentation`` - pushes the commits from the branch
+'api-documentation' to origin. **NB**: This is a bad practise, 
+use [pull requests](#pull-request) instead.
+
+
+``git push -u origin my-new-branch`` - pushes the branch to the remote and gets
+the remote to track the new branch.
+
+
+## Pull the commits from the [remote](#remote)
+
+```
+git pull 
+```
+
+This command pulls the changes made on the [remote](#remote) into the [local](#local),
+making your branch up to date with the changes that meight have been made.
+
+
+## Go to another branch
+
+```
+git checkout [<branch name>]
+```
+
+This command lets you change to the specified branch. Note, that in order to
+checkout to the specified branch your [local](#local) must know that it exists.
+To do this you can use the [``git pull``](#pull-the-commits-from-the-remote)
+or [``git fetch``](#fetch-general-updates) command
+
+
+### Example
+
+``git checkout api-documentation`` - this will change your [working tree](#working-tree)
+to that of a the ``api-documentation`` branch.
+
+
+# Other Basic Git Commands
+
+## Get status of your local _(see changes)_
+
+```
+git status
+```
+
+This will give you a status of current [working tree](#working-tree). Here you
+will be able to see the files which has had changes or have been added since the
+last commit. You will also be able to see the files which has been [staged](#stage).
+
+
+## [Unstage](#unstage) files from commit
+
+```
+git restore [--staged <Path>]
+```
+
+The given path (file or folder) will be unstaged from the commit.
+However, it is rare that it is used.
+
+**NB:** This command is experimental, the behavior may change.
+
+
+### Example
+
+``git restore --staged ./API/API-documentation.md`` - removes the file
+'API-documentation.md' located in the folder 'API' from the commit.
+
+``git restore --staged .`` - removes all files and folders from the commit.
+For more information [go to here](#folder-structure).
 
 
 ## Undo a commit you have made
@@ -291,42 +350,75 @@ they are not stages for a new commit.
 the changes are staged and ready for a new commit.
 
 
-## Push commits to the [remote](#remote)
+## View [branches](#branch) on the [local](#local)
 
 ```
-git push [-u] [<repo_dst> <repo_src>]
+git branch [ [-d <branch name>] | [-r | -a] ]
 ```
 
-This command updates the [remote](#remote) with the [commits](#commit) from the
-specified [branch](#branch).
+This command will show all of the local branches and specify which is checked out to.
+
+The ``-d <branch name>`` will delete a branch from your [local](#local). 
+**Important**: it does not delete the branch from the [remote](#remote),
+meaning that you can remove instances of a branch from your computer
+but not delete the actual branch.
+
+The ``-r`` tag will just show all of the branches.
+
+The ``-a`` tag will show all of the branches as well as the branches which you
+are currently on and the others which is on the local.
+**_Recommended to use_** over the ``-r`` tag, since ``-a`` gives more information.
 
 
 ### Example
 
-``git push`` - pushes the commits from the [local](#local) to the current branch.
+``git branch`` - will show all the branches of which an instance exist on the
+computer, including marking which branch you are currently on.
 
-``git push origin api-documentation`` - pushes the commits from the branch
-'api-documentation' to origin. **NB**: This is a bad practise, 
-use [pull requests](#pull-request) instead.
+``git branch -d api-documentation`` - will delete the local instance of the
+``api-documentation`` branch.
 
+``git branch -r`` - will show all branches in the repository.
 
-``git push -u origin my-new-branch``
-
-
-## Pull the commits from the [remote](#remote)
-
-```
-git pull
-```
+``git branch -a`` - will show all branches in the repository and all the
+branches of which an instance exist on the computer, including marking which
+branch you are currently on.
 
 
-
-
-## Go to another branch
+## Fetch general updates
 
 ```
-git checkout
+git fetch [-p]
 ```
+
+This command will fetch the recent changes from the [remote](#remote)
+(such as  new branches or deleted branches).
+
+Include the tag or ``-p`` to prune (delete) any branches which has been deleted on the [remote](#remote).
+
+
+## Merge other branches into your current branch
+
+```
+git merge [<branch name>]
+```
+
+This command lets you merge the [working tree](#working-tree) of another branch
+into the working tree of the branch which you are currently on. **Note** you
+may need to specify which remote the branch is from, therefore include
+``origin/<branch name>`` when merging.
+
+**NB**: Merge conflicts arises when the two branches have made changes in the
+same area, i.e. changed something in a file or created a file with the same name.
+Git will not let you push commits which contains merge conflicts, hence you should
+handle them immediatly.
+
+
+### Example
+
+``git merge origin/other-api-documentation`` - this will merge the files and their
+content into the branch which you are currently on.
+
 
 
 # Useful Commands
@@ -338,89 +430,51 @@ git config credential.helper store
 ```
 
 This command will store the last credentials entered.
-
-
-## Delete a branch from the local (locally on computer)
-
-```
-git branch -d <branch_name>
-```
-
-This command will delete the local branch, but not from the remote.
+**NB**: Should be executed immediately after credentials has been entered.
 
 
 ## Delete a branch from the remote (branch)
 
 ```
-git push <remote_name> --delete <branch_name>
+git push <remote name> --delete <branch name>
 ```
+
+**NB**: Since this deletes branches from the [remote](#remote) it should be
+used with with great care!
 
 This command will delete the branch from the remote, but not from the local.
-The ```remote_name``` will likely have to be ```origin```.
-
-
-## Fetch general updates
-
-```
-git fetch
-```
-
-This command will fetch the recent changes from the cloud (like new branches or deleted branches) and print them.
-
-Include the tag ```--prune``` or ```-p``` to prune (delete) any branches which has been deleted on the remote.
-
-
-## See all branches
-
-```
-git branch <-r/-a>
-```
-
-This command will show all of the branches which can be checked out to. 
-
-The ```-r``` tag will just show all of the branches.
-
-The ```-a``` tag will show all of the branches as well as the branches which you are currently on and the others which is on the local.
-
-
-## See local branch
-
-```
-git branch
-```
-
-This command will show all of the local branches and specify which is checked out to.
+The ``remote name`` will likely have to be ``origin``.
 
 
 ## See files which has been changed
 
 ```
-git diff
+git diff [--name-only]
 ```
 
 This command will show all of the files which has changed and what has changed in them.
 
-Include the tag ```--name-only``` to only see the names of the files.
+Include the tag ``--name-only`` to only see the names of the files.
+
+**NB**: You will achive the same with [``git status``](#get-status-of-your-local-see-changes).
 
 
 ## Discard changes to a specific file
-
-This command will reset the specific file back to what is on the current remote.
 
 ```
 git checkout -- <file_path>
 ```
 
+This command will reset the specific file back to what is on the current remote.
 The tag ``--`` is to make sure that git knows it is a file.
 
 
 ## Discard all changes made on branch
 
-This command will discard all changes made, and reset back to what is on the current remote.
-
 ```
 git checkout .
 ```
+This command will discard all changes made, and reset back to what is on the current remote.
 
 
 ## Get graph of git commits
@@ -428,3 +482,6 @@ git checkout .
 ```
 git log --all --decorate --oneline --graph
 ```
+
+This command will return a graph of the all the branches and their commits
+which can be used to get an overview if a merge erreor occurs.
