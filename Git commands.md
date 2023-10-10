@@ -1,175 +1,6 @@
-# Terminology
+## Note
 
-## General Command Line Interface (CLI)
-
-### Folder Structure
-
-Every folder has, besides the content, two hidden subjects; ``.`` and ``..``
-
-``.`` is the current folder. Depending on how the command works it might be
-interpreted as the content of the folder, e.g. the command ``git add <Path>``
-adds the changes made in the path, if the path is ``.`` the command ``git add .``
-would add all changes made in this current folder, which includes all file
-changes in said folder.
-
-``..`` is the folder above the current folder. It is often used with the command
-``cd ..`` which changes the command line directory to the to directory above.
-
-
-### Square Brackets
-
-The square brackets ( ``[ ]`` ) indicate that the enclosed element
-(parameter, value, or information) is **_optional_**.
-You can choose one or more items or no items.
-Do **not** type the square brackets themselves in the command line.
-
-
-#### Examples:
-
-``[global options]``
-
-``[source language="arguments"][/source]``
-
-``[destination arguments]``
-
-
-### Angle Brackets
-
-The angle brackets ( ``< >`` ) indicate that the enclosed element
-(parameter, value, or information) is **_mandatory_**. You are required to
-replace the text within the angle brackets with the appropriate information.
-Do **not** type the angle brackets themselves in the command line.
-
-
-#### Examples
-
-``-f <set the File Name variable>``
-
-``-printer <printer name>``
-
-``-repeat <months> <days> <hours> <minutes>``
-
-``date access <mm/dd/yyyy>``
-
-
-### Ellipsis
-
-The ellipsis symbol of three periods ( ``...`` ) means "and so on" and
-indicates that the preceding element (parameter, value, or information) can be
-repeated several times in a command line.
-
-
-#### Examples
-
-``-jobid <job id1, job id2, job id3,...>``
-
-``[-exitcode <exit code 1>,<exit code2>,<exit code3> ...]``
-
-
-### Pipe
-
-The pipe symbol (vertical line) means "or" and indicates a choice within an element.
-If two arguments are separated by the pipe symbol, you can select the element to
-the left of the separator or the element to the right of the separator.
-You cannot select both elements in a single use of the command.
-Within square brackets, the choices are optional. Within angle brackets,
-at least one choice is required.
-
-#### Examples
-
-``-ca_backup [-custom|-rotation|-gfsrotation]``
-
-``-excludeday <Sun|Mon|Tue|Wed|Thu|Fri|Sat>``
-
-``-runjob <start|stop>``
-
-
-### Curly Brackets
-
-The curly brackets ( ``{ } `` ) indicates a set of required items, however,
-you must choose one of the elements. The elements in the curly brackets are
-seperated by the pipe operator.
-Do **not** type the braces themself in the command line.
-
-
-#### Examples
-
-``{FILE_1 | FILE_2}``
-
-``{--source=CLOUD_SOURCE --source-url=SOURCE_URL | --bucket=BUCKET [--source=LOCAL_SOURCE]}``
-
-
-## Git
-
-### Git
-
-An open source, distributed version-control system.
-
-
-### GitHub/GitLab
-
-A platform for hosting and collaborating on Git repositories.
-
-
-### Fork
-
-A copy of a repository on GitHub owned by a different user.
-
-
-### Branch
-
-A lightweight movable pointer to a commit.
-
-
-### Clone
-
-A local version of a repository, including all commits and branches.
-
-
-### Remote
-
-The _remote_ is the branch which is in the cloud, e.g. GitHub/GitLab, hence remote.
-
-
-### Local
-
-The _local_ is branch which is locally on the computer.
-This can be deleted without deleting the [remote](#remote) in the cloud.
-
-
-### Working tree
-
-The _Working Tree_ in Git is a directory (and its files and subdirectory) on your
-file system that is associated with a repository. 
-
-
-### Commit
-
-A _commit_ is a snapshot of the project's currently staged changes.
-Committed snapshots can be thought of as "safe" versions of a project - Git will
-never change them unless you explicitly ask it to.
-
-
-### Stage
-
-To _stage_ af file or folder means that the subject has been added to the commit.
-
-
-### Unstage
-
-To _unstage_ a file or folder means that the subject has been removed from the commit.
-
-
-### Pull Request
-
-A place to compare and discuss the differences introduced on a branch with
-reviews, comments, integrated tests, and more.
-
-
-### HEAD
-
-Representing your current working directory.
-Can generally be thought of the main/master branch.
+A terminology list is found at the bottom.
 
 
 # Essential Commands
@@ -485,3 +316,177 @@ git log --all --decorate --oneline --graph
 
 This command will return a graph of the all the branches and their commits
 which can be used to get an overview if a merge erreor occurs.
+
+
+# Terminology
+
+## General Command Line Interface (CLI)
+
+### Folder Structure
+
+Every folder has, besides the content, two hidden subjects; ``.`` and ``..``
+
+``.`` is the current folder. Depending on how the command works it might be
+interpreted as the content of the folder, e.g. the command ``git add <Path>``
+adds the changes made in the path, if the path is ``.`` the command ``git add .``
+would add all changes made in this current folder, which includes all file
+changes in said folder.
+
+``..`` is the folder above the current folder. It is often used with the command
+``cd ..`` which changes the command line directory to the to directory above.
+
+
+### Square Brackets
+
+The square brackets ( ``[ ]`` ) indicate that the enclosed element
+(parameter, value, or information) is **_optional_**.
+You can choose one or more items or no items.
+Do **not** type the square brackets themselves in the command line.
+
+
+#### Examples:
+
+``[global options]``
+
+``[source language="arguments"][/source]``
+
+``[destination arguments]``
+
+
+### Angle Brackets
+
+The angle brackets ( ``< >`` ) indicate that the enclosed element
+(parameter, value, or information) is **_mandatory_**. You are required to
+replace the text within the angle brackets with the appropriate information.
+Do **not** type the angle brackets themselves in the command line.
+
+
+#### Examples
+
+``-f <set the File Name variable>``
+
+``-printer <printer name>``
+
+``-repeat <months> <days> <hours> <minutes>``
+
+``date access <mm/dd/yyyy>``
+
+
+### Ellipsis
+
+The ellipsis symbol of three periods ( ``...`` ) means "and so on" and
+indicates that the preceding element (parameter, value, or information) can be
+repeated several times in a command line.
+
+
+#### Examples
+
+``-jobid <job id1, job id2, job id3,...>``
+
+``[-exitcode <exit code 1>,<exit code2>,<exit code3> ...]``
+
+
+### Pipe
+
+The pipe symbol (vertical line) means "or" and indicates a choice within an element.
+If two arguments are separated by the pipe symbol, you can select the element to
+the left of the separator or the element to the right of the separator.
+You cannot select both elements in a single use of the command.
+Within square brackets, the choices are optional. Within angle brackets,
+at least one choice is required.
+
+#### Examples
+
+``-ca_backup [-custom|-rotation|-gfsrotation]``
+
+``-excludeday <Sun|Mon|Tue|Wed|Thu|Fri|Sat>``
+
+``-runjob <start|stop>``
+
+
+### Curly Brackets
+
+The curly brackets ( ``{ } `` ) indicates a set of required items, however,
+you must choose one of the elements. The elements in the curly brackets are
+seperated by the pipe operator.
+Do **not** type the braces themself in the command line.
+
+
+#### Examples
+
+``{FILE_1 | FILE_2}``
+
+``{--source=CLOUD_SOURCE --source-url=SOURCE_URL | --bucket=BUCKET [--source=LOCAL_SOURCE]}``
+
+
+## Git
+
+### Git
+
+An open source, distributed version-control system.
+
+
+### GitHub/GitLab
+
+A platform for hosting and collaborating on Git repositories.
+
+
+### Fork
+
+A copy of a repository on GitHub owned by a different user.
+
+
+### Branch
+
+A lightweight movable pointer to a commit.
+
+
+### Clone
+
+A local version of a repository, including all commits and branches.
+
+
+### Remote
+
+The _remote_ is the branch which is in the cloud, e.g. GitHub/GitLab, hence remote.
+
+
+### Local
+
+The _local_ is branch which is locally on the computer.
+This can be deleted without deleting the [remote](#remote) in the cloud.
+
+
+### Working tree
+
+The _Working Tree_ in Git is a directory (and its files and subdirectory) on your
+file system that is associated with a repository. 
+
+
+### Commit
+
+A _commit_ is a snapshot of the project's currently staged changes.
+Committed snapshots can be thought of as "safe" versions of a project - Git will
+never change them unless you explicitly ask it to.
+
+
+### Stage
+
+To _stage_ af file or folder means that the subject has been added to the commit.
+
+
+### Unstage
+
+To _unstage_ a file or folder means that the subject has been removed from the commit.
+
+
+### Pull Request
+
+A place to compare and discuss the differences introduced on a branch with
+reviews, comments, integrated tests, and more.
+
+
+### HEAD
+
+Representing your current working directory.
+Can generally be thought of the main/master branch.
