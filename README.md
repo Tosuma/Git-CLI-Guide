@@ -251,6 +251,25 @@ handle them immediatly.
 content into the branch which you are currently on.
 
 
+## Apply a specific commit from another branch
+
+```
+git cherry-pick <commit hash>
+```
+
+This command lets you apply a specific commit, using the [commit hash](#hash),
+from another branch onto your current branch. It is useful when you want to
+include a single change without merging the entire branch.
+
+**NB**: Cherry-picking can lead to conflicts if the commit being picked modifies
+the same lines as existing changes in your current branch. Handle as you would
+during a merge.
+
+### Example
+
+``git cherry-pick a1b2c3d4`` - applies the commit with hash ``a1b2c3d4`` to your
+current branch.
+
 
 # Useful Commands
 
@@ -490,3 +509,11 @@ reviews, comments, integrated tests, and more.
 
 Representing your current working directory.
 Can generally be thought of the main/master branch.
+
+
+### Hash
+
+A *hash* in Git is a unique identifier for each commit. It is a 40-character string
+generated using the SHA-1 algorithm and represents the state of the repository at
+the time of the commit. You can use the hash to reference, apply, or revert specific
+commits.
